@@ -132,6 +132,7 @@ def winner(board)  # returns the winner of the game if there is a winner (trigge
   end
 end
 
-def play
+def play()
+end
 
 #board = ["O", "O", "O", " ", " ", " ", " ", " ", " "]
