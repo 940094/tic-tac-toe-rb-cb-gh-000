@@ -132,7 +132,16 @@ def winner(board)  # returns the winner of the game if there is a winner (trigge
   end
 end
 
-def play()
+def play(board)
+  until over?(board) # until the game is over
+    turn(board) # take turns
+  end
+
+  if won?(board)  # if the game is won
+    puts "You've Won, #{winner(board)}"# congratulate the winner
+  elsif draw?(board) # else if the game was a draw
+    puts "It's a Draw!"  # tell the players its a draw
+  end
 end
 
 #board = ["O", "O", "O", " ", " ", " ", " ", " ", " "]
