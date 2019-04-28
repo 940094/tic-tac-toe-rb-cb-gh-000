@@ -56,19 +56,34 @@ def turn(board)
   puts "Please enter 1-9:"
   input = gets.strip
   index = input_to_index(input)
-  counter = 0
   if valid_move?(board, index)
     move(board, index)
     display_board(board)
-    counter += 1
   else
     turn(board)
   end
-  return turn_count(board, counter)
 end
 
-def turn_count(board, counter)  # look at how many
-  return counter
+def turn_count(board)
+  # Assumes player who goes first is 'X'
+  # When X goes, there is 1 occupied space so it's O's turn. When ) goes, there are 2 occupied spaces, so it's X's turn
+  # iterate through each board and keep count of Xs or Os
+  count = 0
+  board.each do |cell|
+    if cell == 'X' || cell == 'O'
+      count += 1
+    end
+  end
+  return count
+end
+
+def current_player(board)
+  count = turn_count(board)
+  if count % 2 == 0
+    return 'X'
+  else
+    return 'O'
+  end
 end
 
 def won?(board)  # return false if no winning combo; return winning combination index if there is a win
